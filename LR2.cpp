@@ -73,7 +73,7 @@ public:
 int _tmain(int argc, _TCHAR* argv[])
 {
 	
-	/ColoredPoint *p=new ColoredPoint(1,2, 42);
+	ColoredPoint *p=new ColoredPoint(1,2, 42);
 
 	delete p;
 
