@@ -4,7 +4,8 @@
 #include "stdafx.h"
 #include <conio.h>
 
-//создание классов, атрибутов, конструкторов, создание и уничтожение статических  объектов
+//создание динамических объектов, создание объектов с помощью различных конструкторов
+//удаление динамических объектов
 
 
 class Point{
@@ -35,12 +36,13 @@ public:
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	{
-		Point p;
-		Point p2(10, 20);
-		Point p3(p2);
-	}
+	Point *p=new Point;
+	Point *p2= new Point(10, 20);
+	Point *p3=new Point(*p2);
 	
+	delete p;
+	delete p2;
+	delete p3;
 
 	_getch();
 	return 0;
