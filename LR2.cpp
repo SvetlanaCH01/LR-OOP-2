@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include <conio.h>
 
-//помещение объектов в переменные различных типов 
+//композиция объектов
 
 class Point{
 protected:
@@ -69,15 +69,44 @@ public:
 	}
 };
 
+class Section{ //класс не наследуется от другого класса
+protected:
+	Point *p1; //два указателя на первую и вторую точки отрезка
+	Point *p2;
+public:
+	Section(){ //конструктор
+		printf("Section()\n");
+		p1 = new Point; //создание двух точек с нулевыми координатами по умолчанию
+		p2 = new Point;
+	}
+	Section(int x1, int y1, int x2, int y2){ //конструктор с параметрами
+		printf("Section(int x1, int y1, int x2, int y2)\n");
+		p1 = new Point(x1, y1); 
+		p2 = new Point(x2, y2);
+	}
+	Section(const Section &s){ //копирующий конструктор 
+		printf("Section(const Section &p)\n");
+		p1 = new Point(*(s.p1)); //глубокое копирование
+		p2 = new Point(*(s.p2));
+	}
+	~Section(){ //деструктор
+		//printf("%d, %d\n", x, y);
+		delete p1; //удаление двух точек
+		delete p2;
+
+		printf("~Section()\n");
+	}
+};
+
 
 int _tmain(int argc, _TCHAR* argv[])
 {
 	
-	Point *p1 =new ColoredPoint(1,2, 42); 
-	ColoredPoint *p2 = new ColoredPoint(1, 2, 42);
-
-	delete p1;
-	delete p2;
+	Section *s1 = new Section;
+	Section *s2 = new Section(*s1);
+	
+	delete s1;
+	delete s2;
 
 	_getch();
 	return 0;
