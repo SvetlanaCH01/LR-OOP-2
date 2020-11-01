@@ -73,10 +73,11 @@ public:
 int _tmain(int argc, _TCHAR* argv[])
 {
 	
-	Point *p=new ColoredPoint(1,2, 42); //в переменную базового класса поместить объект потомка
-	//если сделать наоборот, выдается ошибка
+	Point *p1 =new ColoredPoint(1,2, 42); 
+	ColoredPoint *p2 = new ColoredPoint(1, 2, 42);
 
-	delete p;
+	delete p1;
+	delete p2;
 
 	_getch();
 	return 0;
