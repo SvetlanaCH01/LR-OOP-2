@@ -4,13 +4,10 @@
 #include "stdafx.h"
 #include <conio.h>
 
-
-//невозможность обратиться к полю х и у, поскольку они private/protected 
-
-
+//проверка доступности атрибутов и методов
 
 class Point{
-private:
+protected:
 	int x, y; //атрибуты
 public:
 	Point(){ //конструктор
@@ -32,21 +29,27 @@ public:
 		printf("%d, %d\n", x, y);
 		printf("~Point()\n");
 	}
+	void move(int dx, int dy){ // метод c параметрами и реализацией
+		x = x + dx;
+		y = y + dy; 
+	}
+
+	void reset(); //метод без параметров и реализации
 };
 
-
+void Point::reset(){ //реализация метода после объявления класса
+	x = 0;
+	y = 0;
+}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	Point *p=new Point;
-	Point *p2= new Point(10, 20);
-	Point *p3=new Point(*p2);
 	
-	p->x; //невозможность обратиться к х
+	Point *p=new Point(1,2);
+	p->reset(); //Вывод (10,10)
+	p->move(10,10);  //обратиться к свойству мы не можем, но вызвать метод можем. Вывод (11,12)
 
 	delete p;
-	delete p2;
-	delete p3;
 
 	_getch();
 	return 0;
