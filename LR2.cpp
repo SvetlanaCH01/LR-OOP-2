@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include <conio.h>
 
-//определение классов-объектов, класс-потомок, проверка вызова деструкторов, конструкторов
+//помещение объектов в переменные различных типов 
 
 class Point{
 protected:
@@ -73,7 +73,8 @@ public:
 int _tmain(int argc, _TCHAR* argv[])
 {
 	
-	ColoredPoint *p=new ColoredPoint(1,2, 42);
+	Point *p=new ColoredPoint(1,2, 42); //в переменную базового класса поместить объект потомка
+	//если сделать наоборот, выдается ошибка
 
 	delete p;
 
