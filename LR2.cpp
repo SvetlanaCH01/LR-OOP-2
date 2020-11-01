@@ -4,13 +4,15 @@
 #include "stdafx.h"
 #include <conio.h>
 
-//создание динамических объектов, создание объектов с помощью различных конструкторов
-//удаление динамических объектов
+
+//невозможность обратиться к полю х и у, поскольку они private/protected 
+
 
 
 class Point{
-public:
+private:
 	int x, y; //атрибуты
+public:
 	Point(){ //конструктор
 		printf("Point()\n");
 		x = 0;
@@ -40,6 +42,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	Point *p2= new Point(10, 20);
 	Point *p3=new Point(*p2);
 	
+	p->x; //невозможность обратиться к х
+
 	delete p;
 	delete p2;
 	delete p3;
